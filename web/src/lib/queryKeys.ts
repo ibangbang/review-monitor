@@ -1,0 +1,17 @@
+export const qk = {
+  me: ['me'] as const,
+  workspaces: ['workspaces'] as const,
+  workspace: (id: string) => ['workspace', id] as const,
+  members: (id: string) => ['workspace', id, 'members'] as const,
+  applications: (workspaceId: string, params?: unknown) => ['applications', workspaceId, params] as const,
+  application: (workspaceId: string, id: string) => ['application', workspaceId, id] as const,
+  storeApps: (workspaceId: string, applicationId: string) => ['store-apps', workspaceId, applicationId] as const,
+  reviews: (workspaceId: string, params?: unknown) => ['reviews', workspaceId, params] as const,
+  review: (workspaceId: string, id: string) => ['review', workspaceId, id] as const,
+  connections: (workspaceId: string, params?: unknown) => ['store-connections', workspaceId, params] as const,
+  channels: (workspaceId: string) => ['notification-channels', workspaceId] as const,
+  rules: (workspaceId: string) => ['notification-rules', workspaceId] as const,
+  history: (workspaceId: string, params?: unknown) => ['notification-history', workspaceId, params] as const,
+  analytics: (workspaceId: string, key: string, params?: unknown) => ['analytics', workspaceId, key, params] as const,
+  syncHealth: (workspaceId: string) => ['analytics', workspaceId, 'sync-health'] as const,
+};

@@ -1,0 +1,32 @@
+{
+  "name": "reviewmonitor-cloudworker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ReviewMonitor CloudWorker: scheduler, review sync and notification functions",
+  "main": "dist/functions/scheduler.handler.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "dev": "ts-node src/cli.ts",
+    "scheduler": "ts-node src/cli.ts scheduler",
+    "review-worker": "ts-node src/cli.ts review-worker",
+    "notification-worker": "ts-node src/cli.ts notification-worker",
+    "recover": "ts-node src/cli.ts recover",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "e2e": "ts-node scripts/e2e-local.ts"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.15.3",
+    "ulid": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^22.19.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
