@@ -27,7 +27,7 @@ interface AppStats {
   lastSyncedAt: Date | null;
   reviewCount: number;
   newReviews7d: number;
-  avgRating: number | null;
+  averageRating: number | null;
 }
 
 export interface PublicApplication {
@@ -43,7 +43,7 @@ export interface PublicApplication {
   lastSyncedAt: Date | null;
   reviewCount: number;
   newReviews7d: number;
-  avgRating: number | null;
+  averageRating: number | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -455,7 +455,7 @@ export class ApplicationsService {
         lastSyncedAt: sync?.lastSyncedAt ?? null,
         reviewCount: Number(review?.reviewCount ?? 0),
         newReviews7d: Number(review?.newReviews7d ?? 0),
-        avgRating: review?.avgRating == null ? null : Number(Number(review.avgRating).toFixed(2)),
+        averageRating: review?.avgRating == null ? null : Number(Number(review.avgRating).toFixed(2)),
       });
     }
     return result;
@@ -503,7 +503,7 @@ export class ApplicationsService {
       lastSyncedAt: stats?.lastSyncedAt ?? null,
       reviewCount: stats?.reviewCount ?? 0,
       newReviews7d: stats?.newReviews7d ?? 0,
-      avgRating: stats?.avgRating ?? null,
+      averageRating: stats?.averageRating ?? null,
       createdAt: application.createdAt,
       updatedAt: application.updatedAt,
     };

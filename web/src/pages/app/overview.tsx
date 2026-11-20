@@ -144,7 +144,7 @@ export function OverviewPage() {
         />
         <StatCard
           label="平均评分"
-          value={overviewQuery.isLoading ? '—' : totals?.averageRating !== null ? String(totals?.averageRating ?? '—') : '—'}
+          value={overviewQuery.isLoading ? '—' : totals?.averageRating != null ? String(totals.averageRating) : '—'}
           hint="基于采集样本"
           icon={Star}
         />

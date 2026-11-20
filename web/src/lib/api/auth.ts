@@ -54,6 +54,6 @@ export async function updateWorkspace(workspaceId: string, input: { name: string
 
 export async function fetchWorkspaceMembers(workspaceId: string) {
   return requestData<
-    Array<{ id: string; userId: string; displayName: string | null; email: string; role: string; joinedAt: string }>
+    Array<{ userPublicId: string; displayName: string | null; email: string; role: string; joinedAt: string }>
   >(`/workspaces/${workspaceId}/members`, { workspaceId });
 }

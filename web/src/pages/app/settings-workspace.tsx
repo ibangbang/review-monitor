@@ -114,7 +114,7 @@ export function SettingsWorkspacePage() {
               </THead>
               <TBody>
                 {(membersQuery.data ?? []).map((member) => (
-                  <TR key={member.id}>
+                  <TR key={member.userPublicId}>
                     <TD>
                       <p className="text-xs font-medium">{member.displayName ?? member.email}</p>
                       <p className="text-[11px] text-muted-foreground">
@@ -125,7 +125,7 @@ export function SettingsWorkspacePage() {
                   </TR>
                 ))}
                 {!membersQuery.data?.length ? (
-                  <TR>
+                  <TR key="empty">
                     <TD colSpan={2} className="py-6 text-center text-xs text-muted-foreground">
                       暂无成员
                     </TD>

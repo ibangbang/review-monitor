@@ -175,8 +175,8 @@ export function ApplicationDetailPage() {
               <Stat label="近 7 天新增" value={String(app.newReviews7d)} />
               <Stat
                 label="平均评分"
-                value={app.averageRating !== null ? app.averageRating.toFixed(1) : '—'}
-                extra={app.averageRating !== null ? <StarRating rating={app.averageRating} size={12} /> : null}
+                value={app.averageRating != null ? app.averageRating.toFixed(1) : '—'}
+                extra={app.averageRating != null ? <StarRating rating={app.averageRating} size={12} /> : null}
               />
             </div>
           </SectionCard>

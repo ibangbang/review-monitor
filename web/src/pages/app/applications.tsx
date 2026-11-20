@@ -109,7 +109,7 @@ export function ApplicationsPage() {
 
               <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
                 <span className="flex items-center gap-1.5">
-                  {app.averageRating !== null ? (
+                  {app.averageRating != null ? (
                     <>
                       <StarRating rating={app.averageRating} size={12} />
                       <span>{app.averageRating.toFixed(1)}</span>

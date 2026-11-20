@@ -115,7 +115,7 @@ export function AnalyticsPage() {
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Kpi label="评价总量" value={String(totals?.reviewCount ?? '—')} sub={totals?.changePercent !== null && totals ? `${totals.changePercent > 0 ? '+' : ''}${totals.changePercent.toFixed(1)}% 环比` : '无环比数据'} />
-        <Kpi label="平均评分" value={totals?.averageRating !== null && totals ? totals.averageRating.toFixed(2) : '—'} sub="加权平均" />
+        <Kpi label="平均评分" value={totals?.averageRating != null ? totals.averageRating.toFixed(2) : '—'} sub="加权平均" />
         <Kpi label="低星占比" value={totals ? `${totals.lowRatingRatio.toFixed(1)}%` : '—'} sub={totals ? `${totals.lowRatingCount} 条 1–2 星` : ''} />
         <Kpi label="待处理" value={String(totals?.pendingCount ?? '—')} sub="待处理 + 处理中" />
       </div>
