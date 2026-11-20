@@ -7,6 +7,7 @@ import zhCN from '@arco-design/web-react/es/locale/zh-CN';
 import '@arco-design/web-react/dist/css/arco.css';
 import './global.css';
 import { App } from './App';
+import { ErrorBoundary } from './components/error-boundary';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,12 +21,14 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ConfigProvider locale={zhCN}>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </QueryClientProvider>
-    </ConfigProvider>
+    <ErrorBoundary>
+      <ConfigProvider locale={zhCN}>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </QueryClientProvider>
+      </ConfigProvider>
+    </ErrorBoundary>
   </React.StrictMode>,
 );

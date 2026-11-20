@@ -19,7 +19,9 @@ pnpm build
 
 ## 管理员账号
 
-`admin@reviewmonitor.local`，密码为 API 项目 `.env` 的 `ADMIN_PASSWORD`（由 `pnpm seed` 在 api 中创建）。
+`admin@reviewmonitor.local`，密码为 API 项目 `.env` 的 `ADMIN_PASSWORD`（由 `pnpm seed` 在 api 中创建）。开发模式下登录页已预填该账号并显示提示，直接点「登录」即可；生产构建默认不展示，需要时设 `VITE_SHOW_TEST_ACCOUNTS=true` 重新构建。
+
+渲染期异常由 `src/components/error-boundary.tsx` 兜底，会显示错误信息而不是白屏。
 
 ## 页面
 

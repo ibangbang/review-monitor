@@ -15,7 +15,9 @@ pnpm build      # 产物在 dist/
 
 ## 演示账号
 
-`demo-ui@reviewmonitor.local`（密码见 API 项目 `.env` 的演示种子说明）。登录后可见「演示工作区」，内含两个应用与混排的 mock 商店评价。
+`demo-ui@reviewmonitor.local` / `demo12345`。登录页在开发模式下已预填该账号并显示提示，直接点「登录」即可；登录后可见「演示工作区」，内含两个应用与 48 条 mock 商店评价。生产构建默认不展示，需要时设 `VITE_SHOW_TEST_ACCOUNTS=true` 重新构建。
+
+渲染期异常由 `src/components/common/error-boundary.tsx` 兜底，会显示错误信息而不是白屏。
 
 ## 页面
 

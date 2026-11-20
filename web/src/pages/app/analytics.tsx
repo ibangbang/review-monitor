@@ -219,9 +219,9 @@ export function AnalyticsPage() {
               </THead>
               <TBody>
                 {healthQuery.data.items.map((item) => (
-                  <TR key={item.storeAppId}>
+                  <TR key={item.id}>
                     <TD>
-                      <p className="text-xs font-medium">{item.applicationName}</p>
+                      <p className="text-xs font-medium">{item.application.name}</p>
                       <div className="mt-0.5 flex items-center gap-1.5">
                         <StoreBadge storeType={item.storeType} />
                         <span className="truncate text-[11px] text-muted-foreground">{item.externalAppId}</span>
@@ -246,18 +246,18 @@ export function AnalyticsPage() {
       <SectionCard className="mt-5" title="应用对比" description="同周期内各应用的评价表现">
         {comparisonQuery.isLoading ? (
           <LoadingBlock rows={4} />
-        ) : comparisonQuery.data?.items.length ? (
+        ) : comparisonQuery.data?.applications.length ? (
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <ComposedChart data={comparisonQuery.data.items} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
+              <ComposedChart data={comparisonQuery.data.applications} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
                 <XAxis dataKey="name" tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" />
                 <YAxis yAxisId="left" tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" allowDecimals={false} />
                 <YAxis yAxisId="right" orientation="right" domain={[0, 5]} tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" />
                 <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8, borderColor: 'hsl(var(--border))' }} />
                 <Bar yAxisId="left" dataKey="reviewCount" name="评价数" radius={[3, 3, 0, 0]} barSize={26}>
-                  {comparisonQuery.data.items.map((item) => (
-                    <Cell key={item.applicationId} fill="hsl(var(--primary))" />
+                  {comparisonQuery.data.applications.map((item) => (
+                    <Cell key={item.id} fill="hsl(var(--primary))" />
                   ))}
                 </Bar>
                 <Line yAxisId="right" type="monotone" dataKey="averageRating" name="平均评分" stroke="#f59e0b" strokeWidth={2} />

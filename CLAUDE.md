@@ -56,7 +56,7 @@ pnpm build                     # tsc --noEmit && vite build
 - `api/.env` 与 `cloudworker/.env` 的 `CREDENTIAL_ENCRYPTION_KEY` **必须一致**，否则 Worker 无法解密 API 写入的商店凭据。
 - `DATABASE_TIMEZONE` 必须匹配 MySQL 会话时区（本机 `+08:00`；UTC 服务器用 `+00:00`）。配置错误会让 `createdAt` 与 `accessExpiresAt` 出现整小时偏移。
 - `WEB_ORIGIN` / `DASH_ORIGIN` 是 CSRF Origin 白名单；新增前端端口必须同步修改，否则写请求返回 `CSRF_ORIGIN_REJECTED`。
-- 演示账号：`demo-ui@reviewmonitor.local`（密码见 `api/.env` 中 `SEED_DEMO` 流程或 `/tmp/demo.env`）；管理员 `admin@reviewmonitor.local`（`ADMIN_PASSWORD`）。
+- 演示账号：`demo-ui@reviewmonitor.local` / `demo12345`；管理员 `admin@reviewmonitor.local` / `af1d118f308728b3e15df740`。两个登录页在开发模式下已预填（`src/lib/test-accounts.ts`，`VITE_SHOW_TEST_ACCOUNTS=true` 可在生产构建中打开），正式上线前删除这些文件。
 - 本地向 `127.0.0.1` webhook 发通知需 `cloudworker/.env` 的 `ALLOW_PRIVATE_WEBHOOKS=true`（生产必须关闭）。
 
 ## 架构总览

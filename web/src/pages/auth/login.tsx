@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label, FieldError } from '@/components/ui/label';
 import { AuthLayout } from './auth-layout';
+import { SHOW_TEST_ACCOUNTS, TEST_ACCOUNT } from '@/lib/test-accounts';
 
 const schema = z.object({
   email: z.string().email('请输入有效的邮箱地址'),
@@ -19,7 +20,12 @@ type FormValues = z.infer<typeof schema>;
 
 export function LoginPage() {
   const navigate = useNavigate();
-  const form = useForm<FormValues>({ resolver: zodResolver(schema), defaultValues: { email: '', password: '' } });
+  const form = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: SHOW_TEST_ACCOUNTS
+      ? { email: TEST_ACCOUNT.email, password: TEST_ACCOUNT.password }
+      : { email: '', password: '' },
+  });
 
   const mutation = useMutation({
     mutationFn: login,
@@ -42,6 +48,13 @@ export function LoginPage() {
       }
     >
       <form className="space-y-4" onSubmit={form.handleSubmit((values) => mutation.mutate(values))}>
+        {SHOW_TEST_ACCOUNTS ? (
+          <div className="space-y-1 rounded-md border border-dashed px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
+            <p className="font-medium text-foreground">测试账号（已预填，可直接登录）</p>
+            <p className="font-mono">{TEST_ACCOUNT.email} / {TEST_ACCOUNT.password}</p>
+            <p>{TEST_ACCOUNT.hint}</p>
+          </div>
+        ) : null}
         <div>
           <Label htmlFor="email">邮箱</Label>
           <Input id="email" type="email" autoComplete="email" placeholder="you@example.com" {...form.register('email')} />

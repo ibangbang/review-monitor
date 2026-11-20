@@ -164,9 +164,9 @@ export function OverviewPage() {
               <p className="font-medium">有 {attention.length} 个市场绑定需要关注</p>
               <ul className="mt-1 space-y-1">
                 {attention.slice(0, 3).map((item) => (
-                  <li key={item.storeAppId} className="flex items-center gap-2">
+                  <li key={item.id} className="flex items-center gap-2">
                     <span className="truncate">
-                      {item.applicationName} · {item.externalAppId}
+                      {item.application.name} · {item.externalAppId}
                     </span>
                     <Badge tone="warning">{SYNC_STATE_LABELS[item.state as SyncState]}</Badge>
                     <span className="truncate text-amber-700">{item.lastErrorMessage ?? '尚未完成首次同步'}</span>
@@ -246,9 +246,9 @@ export function OverviewPage() {
             ) : healthQuery.data?.items.length ? (
               <ul className="space-y-2.5">
                 {healthQuery.data.items.slice(0, 5).map((item) => (
-                  <li key={item.storeAppId} className="flex items-center justify-between gap-2 text-xs">
+                  <li key={item.id} className="flex items-center justify-between gap-2 text-xs">
                     <div className="min-w-0">
-                      <p className="truncate font-medium">{item.applicationName}</p>
+                      <p className="truncate font-medium">{item.application.name}</p>
                       <p className="truncate text-muted-foreground">
                         {item.externalAppId} ·{' '}
                         {item.state === 'never'

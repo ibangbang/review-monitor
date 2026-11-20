@@ -200,23 +200,29 @@ export type DistributionBucket = {
 };
 
 export type ApplicationComparison = {
-  applicationId: string;
+  id: string;
   name: string;
+  iconUrl: string | null;
   reviewCount: number;
   averageRating: number | null;
   lowRatingCount: number;
 };
 
 export type SyncHealthItem = {
-  applicationId: string;
-  applicationName: string;
-  storeAppId: string;
+  id: string;
   storeType: StoreType;
   externalAppId: string;
-  state: 'healthy' | 'delayed' | 'stale' | 'failing' | 'paused' | 'never';
-  freshnessMinutes: number | null;
-  lastSyncedAt: string | null;
-  lastErrorAt: string | null;
-  lastErrorMessage: string | null;
+  status: string;
+  application: { id: string; name: string };
+  syncEnabled: boolean;
   intervalMinutes: number;
+  lastSyncedAt: string | null;
+  lastStartedAt: string | null;
+  lastErrorAt: string | null;
+  lastErrorCode: string | null;
+  lastErrorMessage: string | null;
+  lastTaskStatus: string | null;
+  lastTaskFinishedAt: string | null;
+  freshnessMinutes: number | null;
+  state: 'healthy' | 'delayed' | 'stale' | 'failing' | 'paused' | 'never';
 };

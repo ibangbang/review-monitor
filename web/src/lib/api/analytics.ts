@@ -28,7 +28,7 @@ export function fetchDistribution(params: RangeParams, workspaceId: string) {
 }
 
 export function fetchComparison(params: RangeParams, workspaceId: string) {
-  return requestData<{ items: ApplicationComparison[] }>('/analytics/applications/comparison', {
+  return requestData<{ applications: ApplicationComparison[] }>('/analytics/applications/comparison', {
     workspaceId,
     query: params,
   });

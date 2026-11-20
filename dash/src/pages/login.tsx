@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button, Form, Input, Message, Typography } from '@arco-design/web-react';
 import { IconLock, IconUser } from '@arco-design/web-react/icon';
 import { adminLogin } from '@/lib/api/admin';
+import { SHOW_TEST_ACCOUNTS, TEST_ADMIN } from '@/lib/test-accounts';
 
 const FormItem = Form.Item;
 
@@ -36,9 +37,29 @@ export function LoginPage() {
           </Typography.Title>
         </div>
         <p className="login-sub">管理员账号独立于工作区成员，登录行为将写入审计日志。</p>
+        {SHOW_TEST_ACCOUNTS ? (
+          <div
+            style={{
+              marginBottom: 16,
+              padding: '8px 10px',
+              border: '1px dashed var(--color-border-2)',
+              borderRadius: 4,
+              fontSize: 12,
+              lineHeight: 1.6,
+              color: 'var(--color-text-2)',
+            }}
+          >
+            <div style={{ fontWeight: 500, color: 'var(--color-text-1)' }}>测试账号（已预填，可直接登录）</div>
+            <div style={{ fontFamily: 'monospace' }}>
+              {TEST_ADMIN.email} / {TEST_ADMIN.password}
+            </div>
+            <div>{TEST_ADMIN.hint}</div>
+          </div>
+        ) : null}
         <Form
           form={form}
           layout="vertical"
+          initialValues={SHOW_TEST_ACCOUNTS ? { email: TEST_ADMIN.email, password: TEST_ADMIN.password } : undefined}
           onSubmit={(values) => {
             setSubmitting(true);
             mutation.mutate({ email: values.email.trim(), password: values.password });
